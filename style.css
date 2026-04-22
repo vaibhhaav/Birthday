@@ -1,0 +1,834 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Parisienne&display=swap");
+
+:root {
+  --red-deep: #8b0000;
+  --red-rose: #c2185b;
+  --red-wine: #6b1128;
+  --blush: #fff0f3;
+  --blush-soft: #fff7f8;
+  --surface: rgba(255, 250, 250, 0.84);
+  --surface-strong: rgba(255, 244, 246, 0.94);
+  --line-soft: rgba(194, 24, 91, 0.14);
+  --line-strong: rgba(139, 0, 0, 0.16);
+  --text-main: #4c1e28;
+  --text-soft: #7c4a57;
+  --white-soft: #fafafa;
+  --radius-lg: 30px;
+  --radius-md: 22px;
+  --shadow-card: 0 24px 60px rgba(107, 17, 40, 0.16);
+  --shadow-soft: 0 16px 36px rgba(139, 0, 0, 0.12);
+  --shadow-glow: 0 0 30px rgba(194, 24, 91, 0.16);
+  --transition-soft: 320ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at top left, rgba(194, 24, 91, 0.1), transparent 34%),
+    radial-gradient(circle at 85% 14%, rgba(139, 0, 0, 0.08), transparent 28%),
+    radial-gradient(circle at 20% 86%, rgba(194, 24, 91, 0.09), transparent 30%),
+    linear-gradient(145deg, #fff9fa 0%, var(--blush) 44%, var(--white-soft) 100%);
+  overflow-x: hidden;
+  line-height: 1.75;
+  animation: pageFadeIn 680ms ease both;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.35), transparent 40%),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.08), transparent 65%);
+}
+
+body.page-transition {
+  animation: pageFadeOut 420ms ease forwards;
+}
+
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 42px 20px;
+}
+
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.heart-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  color: rgba(194, 24, 91, 0.28);
+  font-size: 14px;
+  text-shadow: 0 0 14px rgba(194, 24, 91, 0.16);
+  animation: driftHeart 20s linear infinite;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  filter: blur(4px);
+  animation: float 15s ease-in-out infinite;
+}
+
+.blob.one {
+  width: clamp(190px, 24vw, 300px);
+  height: clamp(190px, 24vw, 300px);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.7), rgba(194, 24, 91, 0.18));
+  top: 4%;
+  left: 1%;
+}
+
+.blob.two {
+  width: clamp(150px, 19vw, 230px);
+  height: clamp(150px, 19vw, 230px);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.65), rgba(139, 0, 0, 0.14));
+  top: 64%;
+  right: 4%;
+  animation-delay: 1.8s;
+}
+
+.blob.three {
+  width: clamp(120px, 16vw, 180px);
+  height: clamp(120px, 16vw, 180px);
+  background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.7), rgba(255, 190, 205, 0.35));
+  top: 18%;
+  right: 18%;
+  animation-delay: 3.2s;
+}
+
+.balloon-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.balloon {
+  position: absolute;
+  width: 50px;
+  height: 66px;
+  border-radius: 50% 50% 46% 46%;
+  opacity: 0.22;
+  background: linear-gradient(180deg, rgba(255, 228, 233, 0.95), rgba(194, 24, 91, 0.45));
+  box-shadow:
+    inset -8px -12px 16px rgba(139, 0, 0, 0.14),
+    0 8px 20px rgba(194, 24, 91, 0.12);
+  animation: balloonFloat 20s linear infinite;
+}
+
+.balloon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+  width: 1px;
+  height: 18px;
+  background: rgba(107, 17, 40, 0.26);
+}
+
+.balloon.b1 {
+  left: 8%;
+  bottom: -20px;
+  animation-delay: 0s;
+}
+
+.balloon.b2 {
+  left: 27%;
+  bottom: -24px;
+  animation-delay: 2.6s;
+}
+
+.balloon.b3 {
+  right: 29%;
+  bottom: -22px;
+  animation-delay: 5s;
+}
+
+.balloon.b4 {
+  right: 12%;
+  bottom: -20px;
+  animation-delay: 1.6s;
+}
+
+.balloon.b5 {
+  left: 48%;
+  bottom: -30px;
+  animation-delay: 7s;
+}
+
+.card {
+  position: relative;
+  width: min(920px, 100%);
+  background:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.84), rgba(255, 240, 243, 0.74)),
+    var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(14px);
+  padding: clamp(26px, 4.4vw, 42px);
+  overflow: hidden;
+  animation: fadeUp 820ms ease both;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.5), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), transparent 32%);
+}
+
+.landing-card,
+.emotional-card,
+.final-card {
+  max-width: 760px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Parisienne", "Brush Script MT", cursive;
+  font-weight: 400;
+  line-height: 1.22;
+  color: var(--red-wine);
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.9rem);
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 14px auto 0;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 1.9vw, 1.08rem);
+  max-width: 640px;
+}
+
+.center {
+  text-align: center;
+}
+
+.glow-text {
+  font-size: clamp(2.7rem, 5.8vw, 4.2rem);
+  color: var(--red-wine);
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.55),
+    0 0 20px rgba(194, 24, 91, 0.24),
+    0 0 34px rgba(139, 0, 0, 0.1);
+}
+
+.landing-subtitle {
+  margin-top: 18px;
+  max-width: 520px;
+}
+
+.nav-row {
+  position: relative;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 12px 24px;
+  min-height: 46px;
+  font: 600 0.96rem/1 "Manrope", "Segoe UI", sans-serif;
+  color: #fffaf9;
+  background: linear-gradient(135deg, var(--red-deep), var(--red-rose));
+  box-shadow:
+    0 14px 24px rgba(139, 0, 0, 0.16),
+    0 0 0 rgba(194, 24, 91, 0.2);
+  cursor: pointer;
+  transition:
+    transform var(--transition-soft),
+    box-shadow var(--transition-soft),
+    filter var(--transition-soft),
+    background-position var(--transition-soft);
+  white-space: normal;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow:
+    0 16px 28px rgba(139, 0, 0, 0.18),
+    0 0 24px rgba(194, 24, 91, 0.2);
+  filter: brightness(1.03);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.surprise-btn {
+  padding-inline: 30px;
+}
+
+.flirty-cards {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.flirty-card {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 240, 243, 0.9)),
+    var(--surface-strong);
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  padding: 22px 18px;
+  min-height: 220px;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--transition-soft),
+    box-shadow var(--transition-soft),
+    border-color var(--transition-soft);
+}
+
+.flirty-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.35), transparent 48%);
+  pointer-events: none;
+}
+
+.flirty-card h3 {
+  font-size: 1.75rem;
+}
+
+.flirty-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(194, 24, 91, 0.24);
+  box-shadow:
+    0 18px 34px rgba(139, 0, 0, 0.14),
+    0 0 24px rgba(194, 24, 91, 0.08);
+}
+
+.card-hint {
+  margin-top: 12px;
+  color: rgba(124, 74, 87, 0.78);
+  font-size: 0.92rem;
+}
+
+.card-message {
+  margin-top: 18px;
+  min-height: 64px;
+  color: var(--red-wine);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.flirty-card.revealed .card-message {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flirty-card.revealed .card-hint {
+  opacity: 0.5;
+}
+
+.polaroid-gallery {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.polaroid {
+  position: relative;
+  margin: 0;
+  padding: 12px 12px 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 244, 246, 0.94));
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: var(--radius-md);
+  box-shadow: 0 18px 36px rgba(107, 17, 40, 0.14);
+  overflow: hidden;
+  transition: transform var(--transition-soft), box-shadow var(--transition-soft);
+  animation: fadeUp 820ms ease both;
+}
+
+.polaroid:nth-child(1) {
+  transform: rotate(-2deg);
+}
+
+.polaroid:nth-child(2) {
+  transform: rotate(1.8deg);
+}
+
+.polaroid:nth-child(3) {
+  transform: rotate(-1.2deg);
+}
+
+.polaroid::after {
+  content: "";
+  position: absolute;
+  inset: 12px 12px 18px;
+  border-radius: 14px;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(194, 24, 91, 0.08), rgba(255, 240, 243, 0.05));
+  mix-blend-mode: multiply;
+}
+
+.polaroid img {
+  width: 100%;
+  height: clamp(200px, 28vw, 240px);
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  filter: saturate(0.92) sepia(0.08) brightness(1.02);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.polaroid figcaption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 18px;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  color: #fff8f8;
+  background: linear-gradient(140deg, rgba(107, 17, 40, 0.88), rgba(194, 24, 91, 0.72));
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity var(--transition-soft), transform var(--transition-soft);
+}
+
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow:
+    0 24px 40px rgba(107, 17, 40, 0.18),
+    0 0 22px rgba(194, 24, 91, 0.08);
+}
+
+.polaroid:hover figcaption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.interactive-box {
+  position: relative;
+  margin: 26px auto 0;
+  max-width: 560px;
+  text-align: center;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.9), rgba(255, 240, 243, 0.92));
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  padding: 26px 18px;
+  box-shadow: var(--shadow-soft);
+}
+
+.wish-text {
+  margin-top: 18px;
+  min-height: 34px;
+  font-weight: 600;
+  color: var(--red-wine);
+}
+
+.age-result {
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  padding: 6px;
+}
+
+.age-result.flashing {
+  animation: agePulse 420ms ease;
+}
+
+.typewriter-text {
+  margin: 22px auto 8px;
+  max-width: 620px;
+  min-height: clamp(150px, 26vh, 190px);
+  font-size: clamp(1.03rem, 2.2vw, 1.22rem);
+  line-height: 1.95;
+  color: var(--text-main);
+  white-space: pre-line;
+}
+
+.type-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.08em;
+  background: var(--red-rose);
+  box-shadow: 0 0 12px rgba(194, 24, 91, 0.26);
+  animation: blink 900ms steps(1) infinite;
+}
+
+.final-glow {
+  font-size: clamp(2.9rem, 5.8vw, 4.4rem);
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.6),
+    0 0 22px rgba(194, 24, 91, 0.22),
+    0 0 34px rgba(139, 0, 0, 0.14);
+  animation: glowPulse 3.2s ease-in-out infinite;
+}
+
+.final-subtext {
+  margin: 14px auto 0;
+  max-width: 560px;
+  color: var(--text-soft);
+  font-size: clamp(1rem, 2vw, 1.14rem);
+  line-height: 1.9;
+}
+
+.confetti {
+  position: fixed;
+  top: -12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(194, 24, 91, 0.14);
+  animation: fall linear forwards;
+}
+
+.music-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  border: 1px solid rgba(255, 255, 255, 0.74);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  color: var(--red-wine);
+  background: rgba(255, 248, 249, 0.78);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-soft);
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.music-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 16px 26px rgba(107, 17, 40, 0.14),
+    0 0 16px rgba(194, 24, 91, 0.08);
+  background: rgba(255, 248, 249, 0.92);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) scale(1.03);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh) rotate(340deg);
+    opacity: 0.55;
+  }
+}
+
+@keyframes balloonFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(8px);
+  }
+  100% {
+    transform: translateY(-108vh) translateX(-5px);
+  }
+}
+
+@keyframes pageFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.992);
+  }
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.996);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes agePulse {
+  from {
+    opacity: 0.6;
+    transform: scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+  0%,
+  44% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 0.58),
+      0 0 18px rgba(194, 24, 91, 0.18),
+      0 0 26px rgba(139, 0, 0, 0.12);
+  }
+  50% {
+    text-shadow:
+      0 0 12px rgba(255, 255, 255, 0.66),
+      0 0 24px rgba(194, 24, 91, 0.26),
+      0 0 38px rgba(139, 0, 0, 0.18);
+  }
+}
+
+@keyframes driftHeart {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.95);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.42;
+  }
+  80% {
+    opacity: 0.18;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(22px) scale(1.08);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-shell {
+    padding: 30px 16px;
+  }
+
+  .card {
+    width: min(760px, 100%);
+    padding: 24px 20px;
+  }
+
+  .nav-row {
+    margin-top: 26px;
+  }
+
+  .flirty-cards,
+  .polaroid-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .page-shell {
+    padding: 22px 12px;
+  }
+
+  .card {
+    padding: 22px 16px;
+    border-radius: 24px;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 8vw, 2.3rem);
+  }
+
+  .subtitle {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .nav-row {
+    gap: 10px;
+  }
+
+  .nav-row .btn {
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+
+  .flirty-cards,
+  .polaroid-gallery {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .flirty-card {
+    min-height: 186px;
+    padding: 18px 14px;
+  }
+
+  .polaroid,
+  .polaroid:nth-child(1),
+  .polaroid:nth-child(2),
+  .polaroid:nth-child(3) {
+    transform: rotate(0deg);
+  }
+
+  .polaroid img {
+    height: clamp(190px, 56vw, 220px);
+  }
+
+  .interactive-box {
+    margin-top: 22px;
+    padding: 22px 14px;
+  }
+
+  .typewriter-text {
+    min-height: 138px;
+    line-height: 1.85;
+  }
+
+  .final-subtext {
+    line-height: 1.8;
+  }
+
+  .balloon {
+    width: 42px;
+    height: 56px;
+    opacity: 0.16;
+  }
+
+  .music-toggle {
+    right: 12px;
+    bottom: 12px;
+    padding: 9px 12px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 460px) {
+  .page-shell {
+    padding: 16px 10px;
+  }
+
+  .card {
+    padding: 18px 12px;
+    border-radius: 22px;
+  }
+
+  .glow-text,
+  .final-glow {
+    line-height: 1.12;
+  }
+
+  .subtitle {
+    margin-top: 10px;
+    font-size: 0.95rem;
+  }
+
+  .flirty-card h3 {
+    font-size: 1.55rem;
+  }
+
+  .card-message {
+    min-height: 56px;
+    font-size: 0.95rem;
+  }
+
+  .polaroid figcaption {
+    font-size: 0.84rem;
+    padding: 8px 10px;
+  }
+
+  .music-toggle {
+    border-radius: 16px;
+    max-width: 44vw;
+    line-height: 1.25;
+  }
+}

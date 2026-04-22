@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Delight | Gallery</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="floating-bg">
+      <div class="blob one"></div>
+      <div class="blob two"></div>
+      <div class="blob three"></div>
+    </div>
+    <div class="balloon-layer" aria-hidden="true">
+      <span class="balloon b1"></span>
+      <span class="balloon b2"></span>
+      <span class="balloon b3"></span>
+      <span class="balloon b4"></span>
+      <span class="balloon b5"></span>
+    </div>
+
+    <main class="page-shell">
+      <section class="card">
+        <h2>Our Happy Moments Together</h2>
+        <p class="subtitle">A gentle gallery for the moments that still linger in the heart.</p>
+
+        <div class="polaroid-gallery">
+          <figure class="polaroid">
+            <img src="pic1.jpg" alt="Smiling memory" />
+            <figcaption>This smile changes the whole mood of a day.</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="pic2.jpg" alt="Favorite day memory" />
+            <figcaption>One of those moments I would choose again instantly.</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="pic3.jpg" alt="Unexpected moment memory" />
+            <figcaption>The kind of memory that stays soft and glowing.</figcaption>
+          </figure>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn" onclick="smoothGoTo('fun.html')">Back: Fun</button>
+          <button class="btn" onclick="smoothGoTo('interact.html')">Next: Interact</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

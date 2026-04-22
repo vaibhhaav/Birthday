@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Delight | Fun</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="floating-bg">
+      <div class="blob one"></div>
+      <div class="blob two"></div>
+      <div class="blob three"></div>
+    </div>
+    <div class="balloon-layer" aria-hidden="true">
+      <span class="balloon b1"></span>
+      <span class="balloon b2"></span>
+      <span class="balloon b3"></span>
+      <span class="balloon b4"></span>
+      <span class="balloon b5"></span>
+    </div>
+
+    <main class="page-shell">
+      <section class="card">
+        <h2>Little Reasons That make This Day Special</h2>
+        <p class="subtitle">Tap each card and let the sweetness unfold slowly.</p>
+
+        <div class="flirty-cards">
+          <article class="flirty-card" data-message="A Drop of Sun fell on Earth.">
+            <h3>Reason One</h3>
+            <p class="card-hint">Tap to reveal</p>
+            <p class="card-message"></p>
+          </article>
+          <article class="flirty-card" data-message="A Girl was Born to Conquer this World.">
+            <h3>Reason Two</h3>
+            <p class="card-hint">Tap to reveal</p>
+            <p class="card-message"></p>
+          </article>
+          <article class="flirty-card" data-message="A Girl of Positivity and Warmth was born on this Day.">
+            <h3>Reason Three</h3>
+            <p class="card-hint">Tap to reveal</p>
+            <p class="card-message"></p>
+          </article>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn" onclick="smoothGoTo('index.html')">Back Home</button>
+          <button class="btn" onclick="smoothGoTo('gallery.html')">Next: Gallery</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

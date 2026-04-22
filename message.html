@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Birthday Delight | Message</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="floating-bg">
+      <div class="blob one"></div>
+      <div class="blob two"></div>
+      <div class="blob three"></div>
+    </div>
+    <div class="balloon-layer" aria-hidden="true">
+      <span class="balloon b1"></span>
+      <span class="balloon b2"></span>
+      <span class="balloon b3"></span>
+      <span class="balloon b4"></span>
+      <span class="balloon b5"></span>
+    </div>
+
+    <main class="page-shell">
+      <section class="card center emotional-card">
+        <h2>A Little Truth</h2>
+        <p class="subtitle">This part is quiet, sincere, and entirely for you.</p>
+        <p id="typewriterText" class="typewriter-text"></p>
+        <span id="typeCursor" class="type-cursor" aria-hidden="true"></span>
+
+        <div class="nav-row">
+          <button class="btn" onclick="smoothGoTo('interact.html')">Back: Interact</button>
+          <button class="btn" onclick="smoothGoTo('final.html')">Next: Final Page</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
